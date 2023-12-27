@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
+import Image from 'next/image'
 
 function HeroCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
@@ -76,7 +77,7 @@ function HeroCarousel() {
           <div className="flex">
             {slides.map((slide, index) => (
               <div key={index} className="flex-[0_0_100%]  aspect-video w-full overflow-hidden">
-                <img src={slide.url} alt="sample" className="w-full h-full object-cover" />
+                <Image src={slide.url} alt="sample" priority={true} width={100} height={100} className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
@@ -119,18 +120,15 @@ export default HeroCarousel
 
 const slides = [
   {
-    url: 'https://oneflash.info/wp-content/uploads/77940-1.jpg',
+    url: '/image/77940-1.jpg',
   },
   {
-    url: 'https://oneflash.info/wp-content/uploads/IMG_4712-1.jpg',
+    url: '/image/77931.jpg',
   },
   {
-    url: 'https://oneflash.info/wp-content/uploads/4913959475038897143.99396958218ba7a03177a3fe4a737ae1.23080911.jpeg',
+    url: '/image/4913959475038897143.99396958218ba7a03177a3fe4a737ae1.23080911.jpeg',
   },
   {
-    url: 'https://oneflash.info/wp-content/uploads/77931.jpg',
+    url: '/image/IMG_4712-1.jpg',
   },
-  // {
-  //   url: 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-  // },
 ]
