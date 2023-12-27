@@ -8,9 +8,9 @@ import { useSelectedLayoutSegment } from "next/navigation"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/shared/icons"
-// import { MobileNav } from "@/components/layout/mobile-nav"
 import Image from "next/image"
 import { MainNavItem } from "@/types"
+import { MobileNav } from "./mobile-nav"
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -55,7 +55,7 @@ export function MainNav({ items, children }: MainNavProps) {
               key={index}
               href={item.disabled ? "#" : item.href}
               className={cn(
-                "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
+                "flex items-center text-lg font-medium transition-colors hover:border-b-2 hover:border-pink-500 hover:text-foreground/80 sm:text-sm",
                 item.href.startsWith(`/${segment}`)
                   ? "text-foreground"
                   : "text-foreground/60",
@@ -68,15 +68,22 @@ export function MainNav({ items, children }: MainNavProps) {
         </nav>
       ) : null}
       <button
-        className="flex items-center space-x-2 md:hidden"
+        className=" sticky flex items-center space-x-2 md:hidden ml-3"
         onClick={toggleMobileMenu}
       >
-        {showMobileMenu ? <Icons.close /> : <Image src="/images/logo.png" alt="logo" width={30} height={30} />}
-        <span className="font-bold">Menu</span>
+        {showMobileMenu ? <Icons.close /> : <Icons.menu />}
+        {/* <span className="font-bold">Menu</span> */}
       </button>
-      {/* {showMobileMenu && items && (
-        <MobileNav items={items}>{children}</MobileNav>
-      )} */}
+      {showMobileMenu && items ? (
+        <>
+          <MobileNav items={items}>{children}</MobileNav>
+          <Link href="/" className="md:hidden">{siteConfig.name}</Link>
+        </>
+      ) :
+        <>
+          <Link href="/" className="md:hidden">{siteConfig.name}</Link>
+        </>
+      }
     </div>
   )
 }

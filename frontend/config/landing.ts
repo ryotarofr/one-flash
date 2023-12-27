@@ -5,11 +5,7 @@ import { LandingConfig } from "@/types";
 export const landingConfig: LandingConfig = {
   mainNav: [
     {
-      title: "ONE☆FLASH撮影会 schedule",
-      href: "/schedule",
-    },
-    {
-      title: "ONE☆FLASH撮影会 schedule",
+      title: "撮影会スケジュール",
       href: "/schedule",
     },
     {

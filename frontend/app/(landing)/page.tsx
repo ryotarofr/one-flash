@@ -1,9 +1,10 @@
-import Carousel from "@/components/Crousel/carousel";
+import HeroCarousel from "@/components/layout/hero-carousel";
+
 
 export default function Home() {
   return (
     <div>
-      <Carousel />
+      <HeroCarousel />
     </div>
   )
 }

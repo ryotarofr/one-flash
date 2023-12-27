@@ -29,6 +29,8 @@ import {
   User,
   X,
   LucideIcon,
+  Menu,
+  CalendarCheck,
 } from "lucide-react"
 
 
@@ -42,6 +44,7 @@ export const Icons = {
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   check: Check,
+  calendarCheck: CalendarCheck,
   close: X,
   copy: Copy,
   ellipsis: MoreVertical,
@@ -82,6 +85,7 @@ export const Icons = {
   logo: Puzzle,
   media: Image,
   moon: Moon,
+  menu: Menu,
   page: File,
   post: FileText,
   removeFile: FileX2,

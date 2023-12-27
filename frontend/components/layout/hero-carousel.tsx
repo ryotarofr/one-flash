@@ -3,7 +3,7 @@
 import { useEffect, useCallback, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 
-function Carousel() {
+function HeroCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 
   const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
@@ -75,8 +75,8 @@ function Carousel() {
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
             {slides.map((slide, index) => (
-              <div key={index} className="flex-[0_0_100%]  aspect-video w-full  mx-4 overflow-hidden">
-                <img src={slide.url} alt="sample" className="w-full h-full object-cover rounded-lg" />
+              <div key={index} className="flex-[0_0_100%]  aspect-video w-full overflow-hidden">
+                <img src={slide.url} alt="sample" className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
@@ -115,7 +115,7 @@ function Carousel() {
   )
 }
 
-export default Carousel
+export default HeroCarousel
 
 const slides = [
   {
