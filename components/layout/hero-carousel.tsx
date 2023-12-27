@@ -77,7 +77,7 @@ function HeroCarousel() {
           <div className="flex">
             {slides.map((slide, index) => (
               <div key={index} className="flex-[0_0_100%]  aspect-video w-full overflow-hidden">
-                <Image src={slide.url} alt="sample" priority={true} width={100} height={100} className="w-full h-full object-cover" />
+                <Image src={slide.url} alt="sample" priority={true} width={1000} height={1000} className="w-full h-full object-cover" />
               </div>
             ))}
           </div>

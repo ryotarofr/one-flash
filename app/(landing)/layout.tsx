@@ -6,13 +6,13 @@ import { landingConfig } from "@/config/landing"
 // import { getCurrentUser } from "@/lib/session"
 import { Suspense } from "react"
 
-interface MarketingLayoutProps {
+interface LandingLayoutProps {
   children: React.ReactNode
 }
 
-export default async function MarketingLayout({
+export default async function LandingLayout({
   children,
-}: MarketingLayoutProps) {
+}: LandingLayoutProps) {
   // const user = await getCurrentUser()
 
   return (
