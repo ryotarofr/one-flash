@@ -1,6 +1,8 @@
 import {
   AlertTriangle,
   ArrowRight,
+  CalendarDays,
+  Camera,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -12,6 +14,7 @@ import {
   FileText,
   FileX2,
   GraduationCap,
+  Heart,
   HelpCircle,
   Image,
   Laptop,
@@ -41,6 +44,8 @@ export const Icons = {
   addFile: FilePlus2,
   arrowRight: ArrowRight,
   billing: CreditCard,
+  camera: Camera,
+  calendar: CalendarDays,
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   check: Check,
@@ -80,6 +85,7 @@ export const Icons = {
     </svg>
   ),
   help: HelpCircle,
+  heart: Heart,
   laptop: Laptop,
   learn: GraduationCap,
   logo: Puzzle,
