@@ -9,7 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.3",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toast": "^1.1.5",
     "@t3-oss/env-nextjs": "^0.7.1",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "embla-carousel-react": "8.0.0-rc17",
     "lucide-react": "^0.302.0",
@@ -17,6 +22,7 @@
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.49.2",
     "tailwind-merge": "^2.2.0",
     "zod": "^3.22.4"
   },
