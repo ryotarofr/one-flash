@@ -15,7 +15,7 @@ interface MobileNavProps {
 }
 
 export function MobileNav({ items, children }: MobileNavProps) {
-  // useLockBody()
+  useLockBody()
 
   return (
     <div
@@ -23,7 +23,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
         "fixed inset-0 top-14 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto pb-32 shadow-md animate-in slide-in-from-bottom-80 md:hidden"
       )}
     >
-      <div className="relative z-20 grid gap-6 rounded-md bg-white p-4 text-popover-foreground shadow-md">
+      <div className="relative z-20 grid gap-6 rounded-md bg-white px-4 text-popover-foreground shadow-md">
         {/* <Link href="/" className="flex items-center space-x-2"> */}
         {/* <Image src="/images/logo.png" alt="logo" width={30} height={30} /> */}
         {/* <Icons.logo /> */}
@@ -35,7 +35,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
               key={index}
               href={item.disabled ? "#" : item.href}
               className={cn(
-                "flex w-full items-center p-2 text-md font-medium border-b hover:border-pink-500",
+                "flex w-full items-center px-2 py-6 text-md font-medium border-b hover:border-pink-500",
                 item.disabled && "cursor-not-allowed opacity-60"
               )}
             >
