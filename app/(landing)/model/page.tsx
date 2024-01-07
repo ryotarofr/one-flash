@@ -20,7 +20,7 @@ const ModelPage = () => {
             <div className="text-gray-500 font-light">model introduction</div>
           </div>
           <div className="grid md:grid-cols-4 md:space-x-10">
-            <Tabs defaultValue="okayama" className="col-span-3">
+            <Tabs defaultValue="okayama" className="md:col-span-3">
               <div className="flex justify-end">
                 <TabsList className="mx-4">
                   <TabsTrigger value="okayama">岡山エリア</TabsTrigger>
@@ -42,7 +42,7 @@ const ModelPage = () => {
                 ))}
               </TabsContent>
             </Tabs>
-            <div className="col-span-1">
+            <div className="md:col-span-1">
               <div className="text-center border-b text-xl">公式 X </div>
               <TweetPreview />
             </div>
