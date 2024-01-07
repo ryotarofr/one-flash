@@ -12,6 +12,9 @@ interface UserData {
 
 export const Test = () => {
   const [post, setPosts] = useState<UserData[]>([])
+
+  const [createPost, setCreatePost] = useState({ name: "", email: "", phone: "" });
+
   useEffect(() => {
     axios.get('http://0.0.0.0/api/student')
       .then(res => {
@@ -20,6 +23,15 @@ export const Test = () => {
   }, [])
 
   console.log(post);
+
+  const handleCreate = async () => {
+    try {
+      const response = await axios.post('http://0.0.0.0/api/student', createPost);
+      console.log('POSTリクエスト成功:', response.data);
+    } catch (error) {
+      console.error('POSTリクエストエラー:', error);
+    }
+  }
 
   if (!post) return
   return (
@@ -34,6 +46,8 @@ export const Test = () => {
         :
         <div></div>
       }
+
+      <div></div>
     </div>
   )
 }

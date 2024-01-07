@@ -4,7 +4,7 @@ const Personal = () => {
   return (
     <div>
       <div className="flex justify-center my-5">
-        <InputWithButton />
+        <InputForm />
       </div>
     </div>
   )

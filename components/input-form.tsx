@@ -17,6 +17,10 @@ import {
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 import { Button } from "./ui/button"
+import axios from "axios"
+import { useState } from "react"
+
+
 const FormSchema = z.object({
   username: z.string().min(2, {
     message: "2文字以上にしてください。",
@@ -37,7 +41,7 @@ export function InputForm() {
     },
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -46,8 +50,13 @@ export function InputForm() {
         </pre>
       ),
     })
-
-
+    try {
+      const response = await axios.post('http://0.0.0.0/api/student', data);
+      console.log('POSTリクエスト成功:', response.data);
+    } catch (error) {
+      console.error('POSTリクエストエラー:', error);
+    }
+    console.log(data)
   }
 
   return (
