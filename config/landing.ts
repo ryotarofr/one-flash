@@ -24,5 +24,9 @@ export const landingConfig: LandingConfig = {
       title: "出張撮影サービス",
       href: "/photo",
     },
+    {
+      title: "お問い合わせ",
+      href: "/contact",
+    },
   ],
 }
