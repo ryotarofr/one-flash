@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-
+import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -15,96 +15,111 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { toast } from "@/components/ui/use-toast"
-import { Button } from "./ui/button"
 import axios from "axios"
-import { useState } from "react"
+import { Textarea } from "./ui/textarea"
 
+const phoneRegex = new RegExp(
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
+);
 
-const FormSchema = z.object({
-  username: z.string().min(2, {
-    message: "2文字以上にしてください。",
+const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "2文字以上の名前にしてください。",
   }),
-  email: z.string().min(6, {
-    message: "専用のバリデーション追加する",
+  email: z.string().email({
+    message: "有効なメールアドレスを入力してください。"
   }),
-  password: z.string().min(6, {
-    message: "専用のバリデーション追加する",
+
+  phone: z.string().regex(phoneRegex, {
+    message: "有効な電話番号を入力してください。"
+  }),
+  description: z.string().min(0, {
+    message: "お問い合わせ内容を入力してください。",
   }),
 })
 
 export function InputForm() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      name: "",
+      email: "",
+      phone: "",
+      description: "",
     },
   })
 
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    })
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const response = await axios.post('http://0.0.0.0/api/student', data);
+      const response = await axios.post('http://0.0.0.0/api/student', values);
       console.log('POSTリクエスト成功:', response.data);
     } catch (error) {
       console.error('POSTリクエストエラー:', error);
     }
-    console.log(data)
+    console.log(values)
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>ユーザーネーム</FormLabel>
-              <FormControl>
-                <Input placeholder="アニサキス" {...field} />
-              </FormControl>
-              {/* <FormDescription>
-                This is your public display name.
-              </FormDescription> */}
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Input type="email" placeholder="Email" />
-        {/* <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>メールアドレス</FormLabel>
-              <FormControl>
-                <Input placeholder="anisakis@gmail.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
-  )
-}
-
-
-export function InputWithButton() {
-  return (
-    <div className="w-full max-w-sm items-center space-y-10">
-      <Input type="username" placeholder="アニサキス" />
-      <Input type="email" placeholder="anisakis@gmail.com" />
-      <Button type="submit">Subscribe</Button>
+    <div className="min-w-[276px]">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>ユーザーネーム</FormLabel>
+                <FormControl>
+                  <Input required placeholder="孫 悟空" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>メールアドレス</FormLabel>
+                <FormControl>
+                  <Input required placeholder="son@goku.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>電話番号</FormLabel>
+                <FormControl>
+                  <Input required placeholder="080-1234-5678" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>お問い合わせ内容</FormLabel>
+                <FormControl>
+                  <Textarea {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="flex justify-end">
+            <Button variant="outline" size="lg" type="submit" className=" bg-pink-50 border border-pink-500">送信</Button>
+          </div>
+        </form>
+      </Form>
     </div>
   )
 }
