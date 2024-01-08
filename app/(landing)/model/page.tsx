@@ -1,5 +1,5 @@
 import { Test } from "@/components/Test"
-import { InputForm, InputWithButton } from "@/components/input-form"
+import { InputForm } from "@/components/input-form"
 import ModelCarousel from "@/components/model-carousel"
 import { models } from "@/config/model";
 import { Model } from "@/types/model";
