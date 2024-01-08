@@ -1,8 +1,5 @@
-import { Test } from "@/components/Test"
-import { InputForm } from "@/components/input-form"
 import ModelCarousel from "@/components/model-carousel"
 import { models } from "@/config/model";
-import { Model } from "@/types/model";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import TweetPreview from "@/components/tweet";
 
@@ -16,8 +13,8 @@ const ModelPage = () => {
       <div className="flex justify-center">
         <div className="mx-auto px-5 max-w-6xl">
           <div className="mx-4 sm:mx-0  py-4">
-            <div className="text-xl font-semibold">お問い合わせ</div>
-            <div className="text-gray-500 font-light">contact</div>
+            <div className="text-xl font-semibold">所属モデル紹介</div>
+            <div className="text-gray-500 font-light">model introduction</div>
           </div>
           <div className="grid md:grid-cols-4 md:space-x-10">
             <Tabs defaultValue="okayama" className="md:col-span-3">
