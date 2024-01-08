@@ -12,7 +12,7 @@ const ModelPage = () => {
   const kansaiModels = modelData.filter(model => model.eria === 'kansai');
 
   return (
-    <div className="">
+    <div>
       <div className="flex justify-center">
         <div className="mx-auto px-5 max-w-6xl">
           <div className="mx-4 sm:mx-0  py-4">
