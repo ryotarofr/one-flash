@@ -149,7 +149,7 @@ export const models = [
   },
   {
     id: 18,
-    eria: "okayama",
+    eria: "kansai",
     name: "もと",
     pictures: ["/image/models/moto/moto-1.jpeg",
                "/image/models/moto/moto-2.jpeg",
@@ -159,7 +159,7 @@ export const models = [
   },
   {
     id: 19,
-    eria: "okayama",
+    eria: "kansai",
     name: "sho",
     pictures: ["/image/models/sho/sho-1.jpeg",
                "/image/models/sho/sho-2.jpeg",
