@@ -8,6 +8,7 @@ interface UserData {
   name: string
   email: string
   phone?: string
+  description?: string
 }
 
 export const Test = () => {
@@ -39,7 +40,7 @@ export const Test = () => {
       {post ?
         <div>{post.map((data, index) =>
           <div key={index}>
-            <div>{data.name}</div>
+            <div>{data.description}</div>
           </div>
         )}
         </div>
