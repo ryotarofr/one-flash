@@ -26,7 +26,7 @@ export const models = [
     id: 4,
     eria: "okayama",
     name: "りあ",
-    pictures: ["/image/models/ria/ria-1.jpg"],
+    pictures: ["/image/models/ria/ria-1.jpeg"],
   },
   {
     id: 5,
