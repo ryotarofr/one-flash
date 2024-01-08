@@ -7,8 +7,8 @@ const PersonalPage = () => {
       <div className="flex justify-center">
         <div className="mx-auto px-5 max-w-4xl">
           <div className="mx-4 sm:mx-0  py-4">
-            <div className="text-xl font-semibold">所属モデル紹介</div>
-            <div className="text-gray-500 font-light">model introduction</div>
+            <div className="text-xl font-semibold">お問い合わせ</div>
+            <div className="text-gray-500 font-light">contact</div>
           </div>
           <div className="grid md:grid-cols-4 md:space-x-10 mt-4">
             <div className="md:col-span-3 pb-6">
