@@ -8,6 +8,7 @@ export default function IndexPage() {
     <div>
       <HeroCarousel />
       <CardSection />
+      
       <Test />
     </div>
   )
