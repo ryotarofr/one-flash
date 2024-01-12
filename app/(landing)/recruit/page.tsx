@@ -1,3 +1,7 @@
-import test from "node:test";
-
-test
+const RecruitPage = () => { 
+    return (
+    <>aaaaa</>
+  )
+  }
+  
+  export default RecruitPage
