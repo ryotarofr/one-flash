@@ -2,21 +2,24 @@ import {
   Card
 } from "@/components/ui/card"
 import { Icons } from "../shared/icons"
+import Link from "next/link"
 
 
 export const CardSection = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 m-4 md:space-x-2 space-y-4 md:space-y-0">
-      <Card className="p-4">
-        <div className="">
-          <div className="flex md:flex-col md:justify-center md:mx-auto space-x-3 md:space-x-0 md:space-y-4 items-center">
-            <div className="p-4 rounded-full border border-pink-500 hover:bg-pink-200">
-              <Icons.heart className="text-pink-500" />
+      <Link href="/model">
+        <Card className="p-4">
+          <div className="">
+            <div className="flex md:flex-col md:justify-center md:mx-auto space-x-3 md:space-x-0 md:space-y-4 items-center">
+              <div className="p-4 rounded-full border border-pink-500 hover:bg-pink-200">
+                <Icons.heart className="text-pink-500" />
+              </div>
+              <div>モデルの紹介</div>
             </div>
-            <div>モデルの紹介</div>
           </div>
-        </div>
-      </Card>
+        </Card>
+      </Link>
       <Card className="p-4">
         <div className="">
           <div className="flex md:flex-col md:justify-center md:mx-auto space-x-3 md:space-x-0 md:space-y-4 items-center">
