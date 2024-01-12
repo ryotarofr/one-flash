@@ -20,26 +20,30 @@ export const CardSection = () => {
           </div>
         </Card>
       </Link>
-      <Card className="p-4">
-        <div className="">
-          <div className="flex md:flex-col md:justify-center md:mx-auto space-x-3 md:space-x-0 md:space-y-4 items-center">
-            <div className="p-4 rounded-full border border-pink-500 hover:bg-pink-200">
-              <Icons.calendar className="text-pink-500" />
+      <Link href="/schedule">
+        <Card className="p-4">
+          <div className="">
+            <div className="flex md:flex-col md:justify-center md:mx-auto space-x-3 md:space-x-0 md:space-y-4 items-center">
+              <div className="p-4 rounded-full border border-pink-500 hover:bg-pink-200">
+                <Icons.calendar className="text-pink-500" />
+              </div>
+              <div>撮影会スケジュール</div>
             </div>
-            <div>撮影会スケジュール</div>
           </div>
-        </div>
-      </Card>
-      <Card className="p-4">
-        <div className="">
-          <div className="flex md:flex-col md:justify-center md:mx-auto space-x-3 md:space-x-0 md:space-y-4 items-center">
-            <div className="p-4 rounded-full border border-pink-500 hover:bg-pink-200">
-              <Icons.camera className="text-pink-500" />
+        </Card>
+      </Link>
+      <Link href="/photo">
+        <Card className="p-4">
+          <div className="">
+            <div className="flex md:flex-col md:justify-center md:mx-auto space-x-3 md:space-x-0 md:space-y-4 items-center">
+              <div className="p-4 rounded-full border border-pink-500 hover:bg-pink-200">
+                <Icons.camera className="text-pink-500" />
+              </div>
+              <div>出張撮影サービス</div>
             </div>
-            <div>出張撮影サービス</div>
           </div>
-        </div>
-      </Card>
+        </Card>
+      </Link>
     </div>
   )
 }
