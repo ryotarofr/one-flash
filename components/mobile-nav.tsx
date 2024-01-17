@@ -1,12 +1,7 @@
 import * as React from "react"
 import Link from "next/link"
-
-
-import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { useLockBody } from "@/hooks/use-lock-body"
-import { Icons } from "@/components/shared/icons"
-import Image from "next/image"
 import { MainNavItem } from "@/types"
 
 interface MobileNavProps {
@@ -24,11 +19,6 @@ export function MobileNav({ items, children }: MobileNavProps) {
       )}
     >
       <div className="relative z-20 grid gap-6 rounded-md bg-white px-4 text-popover-foreground shadow-md">
-        {/* <Link href="/" className="flex items-center space-x-2"> */}
-        {/* <Image src="/images/logo.png" alt="logo" width={30} height={30} /> */}
-        {/* <Icons.logo /> */}
-        {/* <span className="font-bold">{siteConfig.name}</span> */}
-        {/* </Link> */}
         <nav className="grid grid-flow-row auto-rows-max text-sm">
           {items.map((item, index) => (
             <Link
