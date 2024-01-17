@@ -11,9 +11,9 @@ export default function IndexPage() {
       <HeroCarousel />
       <CardSection />
 
-      <Test />
+      {/* <Test />
       <Auth />
-      <Link href="/setting">go setting</Link>
+      <Link href="/setting">go setting</Link> */}
     </div>
   )
 }
