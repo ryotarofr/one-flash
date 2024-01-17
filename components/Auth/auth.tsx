@@ -1,21 +1,10 @@
 "use client"
 
-// import useUserIdStore from '@/hooks/useUserIdStore'
-import axios from 'axios'
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import useUserSessionStore from '@/hooks/use-user-session'
+import { http } from '@/lib/axios'
 
-// XSRF-TOKENをリクエスト時に送信するための設定
-const http = axios.create({
-  baseURL: 'http://localhost',
-  headers: {
-    'X-Requested-With': 'XMLHttpRequest',
-  },
-  withCredentials: true,
-  withXSRFToken: true,
-});
 
 
 
@@ -53,11 +42,8 @@ export default function Auth() {
   const logout = () => {
     http.post('/api/logout').then((res) => {
       console.log(res); //開発用
-      // document.cookie = 'cookieName=; Max-Age=0'; // クッキーを削除
-      // document.cookie = 'XSRF-TOKEN=; Max-Age=0;'; // XSRF-TOKENを削除
       setUserData({ id: null, email: null })
       localStorage.removeItem('userData');
-      // window.location.reload(); // ページをリロードしてクッキーを反映させる
     })
   }
 
@@ -107,7 +93,6 @@ export default function Auth() {
         <label>password</label>
         <input type="password" value={password} onChange={onChangePassword} />
       </div>
-      {/* <div>{userId}</div> */}
       <div>
         {users ?
           <div>
