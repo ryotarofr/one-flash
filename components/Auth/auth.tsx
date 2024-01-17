@@ -5,7 +5,7 @@ import axios from 'axios'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import lscache from "lscache";
+import useUserSessionStore from '@/hooks/use-user-session'
 
 // XSRF-TOKENをリクエスト時に送信するための設定
 const http = axios.create({
@@ -25,18 +25,17 @@ export default function Auth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [users, setUsers] = useState([]);
-  // const { userId, setUserId } = useUserIdStore();
 
+  const { setUserData } = useUserSessionStore()
 
   const login = () => {
+    setUserData({ id: null, email: null })
     http.get('/sanctum/csrf-cookie').then((res) => {
       http.post('/api/login', { email, password }).then((res) => {
-        console.log(res);
+        console.log(res);  //開発用
         if (res.data) {
-          // ポイント① lscacheを用いてlocalStorageに期限付きでログインIDを保持
-          // lscache.set("loginId", JSON.stringify(res.data.id), 100); // 100分でセッション切れる
-          // router.push("/profile");
-          // setUserId(res.data.id);
+          setUserData({ id: res.data.id, email: res.data.email })
+          router.push("/setting");
         } else {
           console.log("error");
         }
@@ -52,14 +51,18 @@ export default function Auth() {
 
   const logout = () => {
     http.post('/api/logout').then((res) => {
-      console.log(res);
+      console.log(res); //開発用
+      // document.cookie = 'cookieName=; Max-Age=0'; // クッキーを削除
+      // document.cookie = 'XSRF-TOKEN=; Max-Age=0;'; // XSRF-TOKENを削除
+      setUserData({ id: null, email: null })
+      // window.location.reload(); // ページをリロードしてクッキーを反映させる
     })
   }
 
   const register = () => {
     http.get('/sanctum/csrf-cookie').then((res) => {
       http.post('/api/register', { email, password }).then((res) => {
-        console.log(res);
+        console.log(res); //開発用
       })
     })
   }
@@ -73,7 +76,7 @@ export default function Auth() {
   // このデータをグローバルステートで管理する
   const getUser = () => {
     http.get('http://localhost/api/user').then((res) => {
-      console.log("user", res);
+      console.log("user", res); //開発用
 
     })
   }

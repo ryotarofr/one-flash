@@ -23,7 +23,7 @@ export const Test = () => {
       })
   }, [])
 
-  console.log(post);
+  // console.log(post);
 
   const handleCreate = async () => {
     try {
