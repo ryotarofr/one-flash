@@ -35,6 +35,7 @@ export default function Auth() {
         console.log(res);  //開発用
         if (res.data) {
           setUserData({ id: res.data.id, email: res.data.email })
+          localStorage.setItem('userData', JSON.stringify({ id: res.data.id, email: res.data.email }));
           router.push("/setting");
         } else {
           console.log("error");
@@ -55,6 +56,7 @@ export default function Auth() {
       // document.cookie = 'cookieName=; Max-Age=0'; // クッキーを削除
       // document.cookie = 'XSRF-TOKEN=; Max-Age=0;'; // XSRF-TOKENを削除
       setUserData({ id: null, email: null })
+      localStorage.removeItem('userData');
       // window.location.reload(); // ページをリロードしてクッキーを反映させる
     })
   }

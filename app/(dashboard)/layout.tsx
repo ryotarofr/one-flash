@@ -3,6 +3,7 @@ import { Suspense } from "react"
 import Footer from "@/components/layout/site-footer"
 import { Navbar } from "@/components/nabvar"
 import { landingConfig } from "@/config/landing"
+import { FetchUserSession } from "@/components/Auth/fetch-user-settion"
 
 
 interface LandingLayoutProps {
@@ -20,7 +21,6 @@ export default async function LandingLayout({
       </Suspense>
       <main className="flex-1">{children}</main>
       <Footer />
-
     </div>
   )
 }

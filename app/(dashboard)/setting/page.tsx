@@ -1,20 +1,26 @@
 "use client"
 
-import { FetchUserSession } from "@/components/Auth/fetch-user-settion"
-import useUserSessionStore from "@/hooks/use-user-session"
 import { redirect } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, useState } from "react";
 
 const SettingPage = () => {
-  const { userData } = useUserSessionStore()
+  const [userData, setUserData] = useState({ id: 0, email: "" })
 
-  if (!userData.id) {
-    redirect("/login")
-  }
-
+  useEffect(() => {
+    // ローカルストレージからデータを取得
+    if (typeof window !== 'undefined') {
+      const userDataString = localStorage?.getItem('userData');
+      const localUserData = userDataString ? JSON.parse(userDataString) : null;
+      if (!localUserData?.id) {
+        redirect("/login")
+      } else {
+        setUserData(localUserData)
+      }
+    }
+  }, [])
   return (
     <div>
-      {userData.email}
+      <div>localData{userData.email}</div>
     </div>
   )
 }

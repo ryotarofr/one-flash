@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { FetchUserSession } from '@/components/Auth/fetch-user-settion'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,7 +19,6 @@ export default function RootLayout({
     <html lang="ja">
       <body className={inter.className}>
         {children}
-        <FetchUserSession />
       </body>
     </html>
   )
