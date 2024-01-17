@@ -8,11 +8,9 @@ import { useEffect } from "react"
 const SettingPage = () => {
   const { userData } = useUserSessionStore()
 
-  useEffect(() => {
-    if (!document.cookie) {
-      redirect("/login")
-    }
-  }, [])
+  if (!userData.id) {
+    redirect("/login")
+  }
 
   return (
     <div>
