@@ -1,4 +1,4 @@
-import { InputForm } from "@/components/input-form"
+import { InputForm } from "@/components/presonal-form"
 import PersonalCarousel from "@/components/layout/personal-carousel"
 import TweetPreview from "@/components/tweet"
 

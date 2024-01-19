@@ -1,4 +1,4 @@
-import { InputForm } from "@/components/input-form"
+import { InputForm } from "@/components/contct-form"
 import TweetPreview from "@/components/tweet"
 
 const ContactPage = () => {
