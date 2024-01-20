@@ -17,6 +17,8 @@ import {
 import { Input } from "@/components/ui/input"
 import axios from "axios"
 import { Textarea } from "./ui/textarea"
+import { RadioGroup, RadioGroupItem } from "./ui/radio-group"
+import { Label } from "./ui/label"
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
@@ -78,9 +80,9 @@ export function InputForm() {
       traffic_method: '',
       closest_station: '',
       description: '',
-      car:'',
-      train:'',
-      bus:'',
+      car: '',
+      train: '',
+      bus: '',
     },
   })
 
@@ -198,29 +200,16 @@ export function InputForm() {
                 <FormMessage />
                 {/* 車、電車、バスの3つのチェックボックス */}
                 <br />
-                <div>
-                  <label>
-                    <input
-                      type="checkbox"
-                      {...form.control.register('car')}
-                    />
-                    車
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      {...form.control.register('train')}
-                    />
-                    電車
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      {...form.control.register('bus')}
-                    />
-                    バス
-                  </label>
-                </div>
+                <RadioGroup defaultValue="option-one">
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="option-one" id="option-one" />
+                    <Label htmlFor="option-one">車</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="option-two" id="option-two" />
+                    <Label htmlFor="option-two">電車・バス</Label>
+                  </div>
+                </RadioGroup>
               </FormItem>
             )}
           />
@@ -244,7 +233,7 @@ export function InputForm() {
               <FormItem>
                 <FormLabel>自己紹介</FormLabel>
                 <FormControl>
-                  <Textarea  required placeholder="紹介文を書いて下さい" {...field} />
+                  <Textarea required placeholder="紹介文を書いて下さい" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
