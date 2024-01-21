@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useCallback, useState } from 'react'
+import { useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Image from 'next/image'
 
@@ -83,35 +83,6 @@ function HeroCarousel() {
           </div>
         </div>
       </div>
-
-      {/* 下のドット */}
-      {/* <div className="flex justify-center  gap-3">
-        {slides.map((slide, index) => (
-          <button
-            key={index}
-            onClick={() => handleThumbClick(index)}
-            className={`w-3 h-3 rounded-full ${index === selectedIndex ? 'bg-gray-500' : 'bg-gray-300'}`}
-          ></button>
-        ))}
-      </div> */}
-
-      {/* プレビューのスライダー */}
-      {/* <div className="overflow-hidden" ref={emblaThumbsRef}>
-        <div className="flex  gap-3">
-          {slides.map((thumb, index) => (
-            <button key={index} onClick={() => handleThumbClick(index)} className="flex-[0_0_28%]">
-              <div
-                className="aspect-video w-full flex items-center justify-center text-xl font-bold"
-                style={{
-                  opacity: index === selectedIndex ? 1 : 0.6,
-                }}
-              >
-                <img src={thumb.url} alt="thumbnail" className="object-cover rounded-lg" />
-              </div>
-            </button>
-          ))}
-        </div>
-      </div> */}
     </div>
   )
 }

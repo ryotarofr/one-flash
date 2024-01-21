@@ -13,11 +13,6 @@ import { Model } from '@/types/model'
 function ModelCarousel({ data }: { data: Model }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 
-  // モデルデータ整形
-  const modelData: Model = models.sort((a, b) => a.id - b.id)[0]; // ソート
-  const modelData2 = models.sort((a, b) => a.id - b.id);
-
-
   const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
     containScroll: 'keepSnaps',
     dragFree: true,
@@ -87,23 +82,7 @@ function ModelCarousel({ data }: { data: Model }) {
           </button>
         </div>
         <div>
-          {/* エリア */}
-          {/* <Tabs defaultValue="okayama" className=""> */}
-          {/* <TabsList> */}
-          {/* <TabsTrigger value="okayama">岡山エリア</TabsTrigger> */}
-          {/* <TabsTrigger value="kansai">関西エリア</TabsTrigger> */}
-          {/* </TabsList> */}
-          {/* <TabsContent value="okayama"> */}
-          {/* モデル */}
-          {/* <div className='text-center text-xl md:text-2xl lg:text-4xl italic font-semibold border-b mb-2'>
-                Nozomi
-              </div> */}
           <div>
-            {/* {modelData2.map((model, index) => (
-                  <div key={index}>
-                    <ModelCarouselItem data={model} />
-                  </div>
-                ))} */}
             <div className='text-center text-xl md:text-2xl lg:text-4xl italic font-semibold border-b mb-2'>
               {data.name}
             </div>
@@ -117,14 +96,6 @@ function ModelCarousel({ data }: { data: Model }) {
               </div>
             </div>
           </div>
-          {/* </TabsContent> */}
-          {/* <TabsContent value="kansai"> */}
-          {/* <div className='text-center text-xl md:text-2xl lg:text-4xl italic font-semibold border-b mb-2'>
-                ちえり
-              </div> */}
-          {/* </TabsContent> */}
-          {/* </Tabs> */}
-
         </div>
 
       </div>

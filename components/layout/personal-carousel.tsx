@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useCallback, useState } from 'react'
+import { useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Image from 'next/image'
 
@@ -9,11 +9,9 @@ import {
   MenubarContent,
   MenubarItem,
   MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar"
-import { Check, CheckSquare, ChevronDown, Square } from 'lucide-react'
+import { CheckSquare, ChevronDown, Square } from 'lucide-react'
 
 
 

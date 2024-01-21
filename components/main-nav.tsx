@@ -8,7 +8,6 @@ import { useSelectedLayoutSegment } from "next/navigation"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/shared/icons"
-import Image from "next/image"
 import { MainNavItem } from "@/types"
 import { MobileNav } from "./mobile-nav"
 
@@ -42,8 +41,6 @@ export function MainNav({ items, children }: MainNavProps) {
   return (
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-2 md:flex">
-        {/* <Image src="/images/logo.png" alt="logo" width={30} height={30} /> */}
-        {/* <Icons.logo /> */}
         <span className="hidden font-urban text-xl font-bold sm:inline-block">
           {siteConfig.name}
         </span>
@@ -72,7 +69,6 @@ export function MainNav({ items, children }: MainNavProps) {
         onClick={toggleMobileMenu}
       >
         {showMobileMenu ? <Icons.close /> : <Icons.menu />}
-        {/* <span className="font-bold">Menu</span> */}
       </button>
       {showMobileMenu && items ? (
         <>
