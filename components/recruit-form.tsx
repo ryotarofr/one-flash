@@ -31,8 +31,11 @@ const formSchema = z.object({
   name_kana: z.string().min(2, {
     message: "2文字以上の名前にしてください。",
   }),
-  sns_account: z.string().min(2, {
-    message: "有効なSNSアカウントを入力してください",
+  x_account: z.string().min(2, {
+    message: "有効なXアカウントを入力してください",
+  }),
+  instagram_account: z.string().min(2, {
+    message: "有効なinstagramアカウントを入力してください",
   }),
   email: z.string().email({
     message: "有効なメールアドレスを入力してください。"
@@ -40,19 +43,19 @@ const formSchema = z.object({
   phone: z.string().regex(phoneRegex, {
     message: "有効な電話番号を入力してください。"
   }),
-  height: z.string().regex(phoneRegex, {
+  stature: z.string().regex(phoneRegex, {
     message: "身長を入力してください。"
   }),
   weight: z.string().regex(phoneRegex, {
     message: "体重を入力してください。"
   }),
-  traffic_method: z.string().regex(phoneRegex, {
-    message: "交通手段にチェックを入れてください。"
+  transportation: z.string().regex(phoneRegex, {
+    message: "移動手段にチェックを入れてください。"
   }),
-  closest_station: z.string().regex(phoneRegex, {
+  nearest_station: z.string().regex(phoneRegex, {
     message: "最寄り駅を入力してください。"
   }),
-  description: z.string().min(0, {
+  self_introduction: z.string().min(0, {
     message: "紹介文を書いて下さい",
   }),
   car: z.string().min(0, {
@@ -64,6 +67,9 @@ const formSchema = z.object({
   bus: z.string().min(0, {
     message: "紹介文を書いて下さい",
   }),
+  picture_id: z.string().min(0, {
+    message: "紹介文を書いて下さい",
+  }),
 })
 
 export function InputForm() {
@@ -72,17 +78,19 @@ export function InputForm() {
     defaultValues: {
       name_kanji: '',
       name_kana: '',
-      sns_account: '',
+      x_account: '',
+      instagram_account: '',
       email: '',
       phone: '',
-      height: '',
+      stature: '',
       weight: '',
-      traffic_method: '',
-      closest_station: '',
-      description: '',
+      transportation: '',
+      nearest_station: '',
+      self_introduction: '',
       car: '',
       train: '',
       bus: '',
+      picture_id: '',
     },
   })
 
@@ -128,10 +136,23 @@ export function InputForm() {
           />
           <FormField
             control={form.control}
-            name="sns_account"
+            name="x_account"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>SNSアカウント</FormLabel>
+                <FormLabel>Xアカウント</FormLabel>
+                <FormControl>
+                  <Input required placeholder="son_goku_000" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="instagram_account"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>instagramアカウント</FormLabel>
                 <FormControl>
                   <Input required placeholder="son_goku_000" {...field} />
                 </FormControl>
@@ -167,7 +188,7 @@ export function InputForm() {
           />
           <FormField
             control={form.control}
-            name="height"
+            name="stature"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>身長(cm)</FormLabel>
@@ -193,10 +214,10 @@ export function InputForm() {
           />
           <FormField
             control={form.control}
-            name="traffic_method"
+            name="transportation"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>交通手段</FormLabel>
+                <FormLabel>移動手段</FormLabel>
                 <FormMessage />
                 {/* 車、電車、バスの3つのチェックボックス */}
                 <br />
@@ -215,7 +236,7 @@ export function InputForm() {
           />
           <FormField
             control={form.control}
-            name="closest_station"
+            name="nearest_station"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>最寄駅</FormLabel>
@@ -228,13 +249,49 @@ export function InputForm() {
           />
           <FormField
             control={form.control}
-            name="description"
+            name="self_introduction"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>自己紹介</FormLabel>
                 <FormControl>
                   <Textarea required placeholder="紹介文を書いて下さい" {...field} />
                 </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="picture_id"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>写真(複数枚選択可)</FormLabel>
+                <FormControl>
+                  {/* ファイルを複数選択するための入力フィールド */}
+                  <Input
+                    type="file"
+                    accept="image/*" // 画像ファイルのみ許可
+                    multiple // 複数選択を有効にする
+                    onChange={(e) => {
+                      // ファイルが選択されたときにフォームの値を更新
+                      const files = e.target.files;
+                      form.setValue('picture_id', files); // ファイルがない場合は undefined になることはないので直接設定
+                    }}
+                  />
+                </FormControl>
+                {/* 選択された画像のプレビューを表示（あれば） */}
+                {form.watch('picture_id') && typeof form.watch('picture_id') !== 'string' && (
+                  <div>
+                    {Array.from(form.watch('picture_id')).map((file, index) => (
+                      <img
+                        key={index}
+                        src={URL.createObjectURL(file)}
+                        alt={`プレビュー${index + 1}`}
+                        className="mt-2 max-w-full"
+                      />
+                    ))}
+                  </div>
+                )}
                 <FormMessage />
               </FormItem>
             )}
