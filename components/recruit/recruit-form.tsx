@@ -16,9 +16,11 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import axios from "axios"
-import { Textarea } from "./ui/textarea"
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group"
-import { Label } from "./ui/label"
+import { Textarea } from "../ui/textarea"
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
+import { Label } from "../ui/label"
+import { Icons } from "../shared/icons"
+import { RecruitImageInput } from "./recruit-image-input"
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
@@ -272,20 +274,17 @@ export function InputForm() {
                     type="file"
                     accept="image/*" // 画像ファイルのみ許可
                     multiple // 複数選択を有効にする
-                    onChange={(e) => {
-                      // ファイルが選択されたときにフォームの値を更新
-                      const files = e.target.files;
-                      form.setValue('picture_id', files); // ファイルがない場合は undefined になることはないので直接設定
-                    }}
                   />
                 </FormControl>
+                <RecruitImageInput />
                 {/* 選択された画像のプレビューを表示（あれば） */}
                 {form.watch('picture_id') && typeof form.watch('picture_id') !== 'string' && (
                   <div>
                     {Array.from(form.watch('picture_id')).map((file, index) => (
                       <img
                         key={index}
-                        src={URL.createObjectURL(file)}
+                        // src={URL.createObjectURL(file)}
+                        src={URL.createObjectURL(file as unknown as Blob)}
                         alt={`プレビュー${index + 1}`}
                         className="mt-2 max-w-full"
                       />

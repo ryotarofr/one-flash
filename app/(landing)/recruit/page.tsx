@@ -1,4 +1,4 @@
-import { InputForm } from "@/components/recruit-form"
+import { InputForm } from "@/components/recruit/recruit-form"
 import TweetPreview from "@/components/tweet"
 
 const RecruitPage = () => {
