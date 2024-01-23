@@ -17,9 +17,10 @@ export const RecruitImageInput = () => {
             key={i}
             type="file"
             accept="image/*"
-            multiple
           />
-          <Icons.trash color="#ff3888" />
+          <Button variant="outline" onClick={(e) => { e.preventDefault(); setImageCount(imageCount - 1); }}>
+            <Icons.trash color="#ff3888" />
+          </Button>
         </div>
       );
     }
