@@ -19,60 +19,9 @@ import axios from "axios"
 import { Textarea } from "../ui/textarea"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
 import { Label } from "../ui/label"
-import { Icons } from "../shared/icons"
 import { RecruitImageInput } from "./recruit-image-input"
+import { formSchema } from "./form-sceme"
 
-const phoneRegex = new RegExp(
-  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
-);
-
-const formSchema = z.object({
-  name_kanji: z.string().min(2, {
-    message: "2文字以上の名前にしてください。",
-  }),
-  name_kana: z.string().min(2, {
-    message: "2文字以上の名前にしてください。",
-  }),
-  x_account: z.string().min(2, {
-    message: "有効なXアカウントを入力してください",
-  }),
-  instagram_account: z.string().min(2, {
-    message: "有効なinstagramアカウントを入力してください",
-  }),
-  email: z.string().email({
-    message: "有効なメールアドレスを入力してください。"
-  }),
-  phone: z.string().regex(phoneRegex, {
-    message: "有効な電話番号を入力してください。"
-  }),
-  stature: z.string().regex(phoneRegex, {
-    message: "身長を入力してください。"
-  }),
-  weight: z.string().regex(phoneRegex, {
-    message: "体重を入力してください。"
-  }),
-  transportation: z.string().regex(phoneRegex, {
-    message: "移動手段にチェックを入れてください。"
-  }),
-  nearest_station: z.string().regex(phoneRegex, {
-    message: "最寄り駅を入力してください。"
-  }),
-  self_introduction: z.string().min(0, {
-    message: "紹介文を書いて下さい",
-  }),
-  car: z.string().min(0, {
-    message: "",
-  }),
-  train: z.string().min(0, {
-    message: "紹介文を書いて下さい",
-  }),
-  bus: z.string().min(0, {
-    message: "紹介文を書いて下さい",
-  }),
-  picture_id: z.string().min(0, {
-    message: "紹介文を書いて下さい",
-  }),
-})
 
 export function InputForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -89,9 +38,6 @@ export function InputForm() {
       transportation: '',
       nearest_station: '',
       self_introduction: '',
-      car: '',
-      train: '',
-      bus: '',
       picture_id: '',
     },
   })
@@ -225,11 +171,11 @@ export function InputForm() {
                 <br />
                 <RadioGroup defaultValue="option-one">
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="option-one" id="option-one" />
+                    <RadioGroupItem value="car" id="option-one" />
                     <Label htmlFor="option-one">車</Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="option-two" id="option-two" />
+                    <RadioGroupItem value="public-transportation" id="option-two" />
                     <Label htmlFor="option-two">電車・バス</Label>
                   </div>
                 </RadioGroup>
