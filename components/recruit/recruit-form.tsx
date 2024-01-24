@@ -21,6 +21,10 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
 import { Label } from "../ui/label"
 import { RecruitImageInput } from "./recruit-image-input"
 import { formSchema } from "./form-sceme"
+import { recruitFormData } from "./recruit-form-data"
+
+type ValidNames = "name_kanji" | "name_kana" | "x_account" | "instagram_account" | "email" | "phone" | "stature" | "weight" | "transportation" | "nearest_station" | "self_introduction" | "picture_id";
+
 
 
 export function InputForm() {
@@ -56,110 +60,22 @@ export function InputForm() {
     <div className="min-w-[276px]">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField
-            control={form.control}
-            name="name_kanji"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>ユーザーネーム(氏名)</FormLabel>
-                <FormControl>
-                  <Input required placeholder="孫 悟空" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="name_kana"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>ユーザーネーム(フリガナ)</FormLabel>
-                <FormControl>
-                  <Input required placeholder="son goku" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="x_account"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Xアカウント</FormLabel>
-                <FormControl>
-                  <Input required placeholder="son_goku_000" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="instagram_account"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>instagramアカウント</FormLabel>
-                <FormControl>
-                  <Input required placeholder="son_goku_000" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>メールアドレス</FormLabel>
-                <FormControl>
-                  <Input required placeholder="son@goku.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>電話番号</FormLabel>
-                <FormControl>
-                  <Input required placeholder="080-1234-5678" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="stature"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>身長(cm)</FormLabel>
-                <FormControl>
-                  <Input required placeholder="175" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="weight"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>体重(kg)</FormLabel>
-                <FormControl>
-                  <Input required placeholder="62" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {recruitFormData.map((data, index) => (
+            <FormField
+              key={index}
+              control={form.control}
+              name={data.name as ValidNames}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{data.label}</FormLabel>
+                  <FormControl>
+                    <Input required placeholder={data.placeholder} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
           <FormField
             control={form.control}
             name="transportation"
@@ -184,32 +100,6 @@ export function InputForm() {
           />
           <FormField
             control={form.control}
-            name="nearest_station"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>最寄駅</FormLabel>
-                <FormControl>
-                  <Input required placeholder="東京駅" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="self_introduction"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>自己紹介</FormLabel>
-                <FormControl>
-                  <Textarea required placeholder="紹介文を書いて下さい" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
             name="picture_id"
             render={({ field }) => (
               <FormItem>
@@ -223,20 +113,6 @@ export function InputForm() {
                   />
                 </FormControl>
                 <RecruitImageInput />
-                {/* 選択された画像のプレビューを表示（あれば） */}
-                {form.watch('picture_id') && typeof form.watch('picture_id') !== 'string' && (
-                  <div>
-                    {Array.from(form.watch('picture_id')).map((file, index) => (
-                      <img
-                        key={index}
-                        // src={URL.createObjectURL(file)}
-                        src={URL.createObjectURL(file as unknown as Blob)}
-                        alt={`プレビュー${index + 1}`}
-                        className="mt-2 max-w-full"
-                      />
-                    ))}
-                  </div>
-                )}
                 <FormMessage />
               </FormItem>
             )}
