@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -16,7 +15,6 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import axios from "axios"
-import { Textarea } from "../ui/textarea"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
 import { Label } from "../ui/label"
 import { RecruitImageInput } from "./recruit-image-input"
