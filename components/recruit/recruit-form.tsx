@@ -106,8 +106,7 @@ export function InputForm() {
                   {/* ファイルを複数選択するための入力フィールド */}
                   <Input
                     type="file"
-                    accept="image/*" // 画像ファイルのみ許可
-                    multiple // 複数選択を有効にする
+                    accept="image/*" // 画像ファイルのみ許
                   />
                 </FormControl>
                 <RecruitImageInput />
